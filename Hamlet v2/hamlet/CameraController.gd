@@ -48,4 +48,4 @@ func ClickAndDrag():
 		
 	if isDragging:
 		var moveVector = get_viewport().get_mouse_position() - dragStartMousePos
-		position = dragStartCameraPos - moveVector * 1/zoom.x
+		position = dragStartCameraPos - moveVector * 1/zoom.x 

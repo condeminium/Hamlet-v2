@@ -1,3 +1,12 @@
 res://Game.tscn
 res://terrain.gd
 res://CameraController.gd
+res://item/Item.tscn
+res://item/item.gd
+res://item/food/berries.tscn
+res://item/food/food.gd
+res://item/food/Food.gd
+res://item/food/Berries.tscn
+res://item/food/Simple Meal.tscn
+res://item_manager.gd
+res://pawn.gd

@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://kbg2koyjwbbw" path="res://pathfinding.gd" id="3_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://k47u6khckpdm" path="res://pawn.tscn" id="4_3mrqo"]
 [ext_resource type="Script" uid="uid://cfmlgqd7sky74" path="res://CameraController.gd" id="4_t88pq"]
+[ext_resource type="Script" uid="uid://yjdxmtkj61do" path="res://item_manager.gd" id="7_3mrqo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_sb48q")
@@ -56,8 +57,9 @@ end = Vector2i(64, 64)
 position = Vector2(1064, 799)
 zoom = Vector2(0.96, 0.96)
 script = ExtResource("4_t88pq")
-zoomSpeed = null
-panSpeed = null
 
 [node name="Pawn" parent="." unique_id=86251647 instance=ExtResource("4_3mrqo")]
 position = Vector2(680, 103)
+
+[node name="ItemManager" type="Node" parent="." unique_id=1967081356]
+script = ExtResource("7_3mrqo")

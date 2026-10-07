@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dqsyina4oed37"]
+
+[ext_resource type="Texture2D" uid="uid://b8dxja4tcw50o" path="res://art/items.png" id="1_i0rd5"]
+[ext_resource type="Script" uid="uid://dxuty7q0ov67n" path="res://item/food/Food.gd" id="2_y3oc0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypveb"]
+atlas = ExtResource("1_i0rd5")
+region = Rect2(48, 0, 16, 16)
+
+[node name="berries" type="Sprite2D" unique_id=1581964791]
+texture = SubResource("AtlasTexture_ypveb")
+script = ExtResource("2_y3oc0")
+nutrition = 0.5
+foodType = 1
