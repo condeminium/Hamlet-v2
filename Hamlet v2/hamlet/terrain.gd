@@ -4,10 +4,13 @@ extends TileMapLayer
 @export var clearTerrain : bool
 @export var mapWidth : int
 @export var mapHeight : int
+@export var waterThreshold : float
+@export var water2Threshold : float
 @export var grassThreshold : float
 @export var grass2Threshold : float
 @export var dirtThreshold : float
 @export var rockThreshold : float
+@export var snowThreshold : float
 @export var terrainSeed : int
 
 # Called when the node enters the scene tree for the first time.
@@ -37,7 +40,11 @@ func GenerateTerrain():
 	
 	for x in range(mapWidth):
 		for y in range(mapHeight):
-			if noise.get_noise_2d(x,y) > grassThreshold:
+			if noise.get_noise_2d(x,y) > waterThreshold:
+				set_cell(Vector2i(x,y), 0, Vector2i(2,1),0)
+			elif noise.get_noise_2d(x,y) > water2Threshold:
+				set_cell(Vector2i(x,y), 0, Vector2i(1,1),0)
+			elif noise.get_noise_2d(x,y) > grassThreshold:
 				set_cell(Vector2i(x,y), 0, Vector2i(0,0),0)
 			elif noise.get_noise_2d(x,y) > grass2Threshold:
 				set_cell(Vector2i(x,y), 0, Vector2i(1,0),0)
@@ -45,5 +52,7 @@ func GenerateTerrain():
 				set_cell(Vector2i(x,y), 0, Vector2i(2,0),0)
 			elif noise.get_noise_2d(x,y) > rockThreshold:
 				set_cell(Vector2i(x,y), 0, Vector2i(3,0),0)
-			else:
+			elif noise.get_noise_2d(x,y) > snowThreshold:
 				set_cell(Vector2i(x,y), 0, Vector2i(0,1),0)
+			else:
+				set_cell(Vector2i(x,y), 0, Vector2i(3,3),0)
