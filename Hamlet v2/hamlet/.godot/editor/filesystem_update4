@@ -1,7 +1,2 @@
-res://node_2d.tscn
-res://pathfinding.gd
-res://game.tscn
 res://Game.tscn
-res://pawn.gd
-res://pawn.tscn
 res://CameraController.gd
