@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://k47u6khckpdm"]
+
+[ext_resource type="Script" uid="uid://dvmj2b8g7egcm" path="res://pawn.gd" id="1_o6oh4"]
+[ext_resource type="Texture2D" uid="uid://dp44leq44dswe" path="res://art/hampter 1616.png" id="2_augvb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3k665"]
+radius = 16.0
+height = 32.0
+
+[node name="Pawn" type="CharacterBody2D" unique_id=86251647]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_o6oh4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=85193900]
+texture_filter = 1
+texture = ExtResource("2_augvb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1804449625]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_3k665")

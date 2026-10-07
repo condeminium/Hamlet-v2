@@ -1,0 +1,9 @@
+78098b89c88a74ebe8c20117b8754620
+::res://::1791323295
+Game.tscn::PackedScene::4790788447247978280::1791323215::0::1::::<><><>0<>0<><>::uid://bj7p024ufcekr::::res://art/terrain_tileset.png<>uid://bm6cw4jwnmuc1::::res://terrain.gd<>uid://kbg2koyjwbbw::::res://pathfinding.gd
+icon.svg::CompressedTexture2D::717728905889980681::1791316970::1791316980::1::::<><><>0<>0<>4e4ac886bd8e8653d0708c055831e942<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+pathfinding.gd::GDScript::704365880490520956::1791323127::0::1::::<>Node2D<><>0<>1<><>::
+terrain.gd::GDScript::3292844777274623838::1791319920::0::1::::<>TileMapLayer<><>0<>1<><>::
+::res://art/::1791323295
+hampter 1616.png::CompressedTexture2D::8273742333207495488::1791323292::1791323296::1::::<><><>0<>0<>05a82c5d2039cc3dea3bd7e03a9df330<>res://.godot/imported/hampter 1616.png-9bb847bbc53cfca58e2b7203855ff9f3.ctex::
+terrain_tileset.png::CompressedTexture2D::3085137228149680405::1791317302::1791317369::1::::<><><>0<>0<>cdff60e9cf4e430358a3a8900b0977ee<>res://.godot/imported/terrain_tileset.png-a0faf5cc43309e79d5382aa20b588b5c.ctex::
