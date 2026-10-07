@@ -6,6 +6,14 @@ const SPEED = 100.0
 
 var path = []
 
+func SetMoveTarget(worldPos : Vector2):
+	var pos = position / terrain.rendering_quadrant_size
+	var targetPos = worldPos / terrain.rendering_quadrant_size
+	path =  pathfinding.RequestPath(pos, targetPos)
+
+func HasReachedDestination():
+	return len(path) == 0
+
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("click"):
 		var pos = position / terrain.rendering_quadrant_size

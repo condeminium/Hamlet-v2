@@ -1,4 +1,5 @@
 extends Node
+class_name ItemManager
 
 enum ItemCategory {ITEM = 0, FOOD = 1, WEAPON = 2, MELEEWEAPON = 3, PROJECTILEWEAPON = 4}
 var itemCategories = ["Item", "Food", "Weapon", "MeleeWeapon", "ProjectileWeapon"]
@@ -21,7 +22,9 @@ func MapToWorldPosition(mapPosX : int, mapPosY : int) -> Vector2:
 	return Vector2(mapPosX * 16 + 8, mapPosY *16 + 8)	
 	pass
 	
-	
+func RemoveItemFromWorld(item):
+	remove_child(item)
+	itemsInWorld.erase(item)
 func SpawnItem(item, mapPosition):
 	var newItem = item.instantiate()
 	add_child(newItem)
@@ -30,7 +33,7 @@ func SpawnItem(item, mapPosition):
 
 func FindNearestItem(itemCategory : ItemCategory, worldPosition : Vector2):
 	if len(itemsInWorld) == 0:
-		return false
+		return null
 	var nearestItem = null
 	var nearestDistance = 999999
 	for item in itemsInWorld:
