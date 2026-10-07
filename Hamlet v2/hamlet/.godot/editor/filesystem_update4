@@ -1,2 +1,3 @@
 res://Game.tscn
 res://terrain.gd
+res://CameraController.gd
