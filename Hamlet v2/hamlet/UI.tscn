@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://lpijedl858lf"]
+
+[ext_resource type="Script" uid="uid://bm0icjadcvskf" path="res://UI.gd" id="1_g6l6n"]
+[ext_resource type="Script" uid="uid://bk6bdbgk7eahl" path="res://pnl_bottom.gd" id="2_qui0h"]
+[ext_resource type="Script" uid="uid://bi56mpqe6h1ad" path="res://pnl_architect.gd" id="3_vrfts"]
+
+[node name="UI" type="CanvasLayer" unique_id=1902769461]
+script = ExtResource("1_g6l6n")
+
+[node name="pnl_bottom" type="Panel" parent="." unique_id=1476246298]
+anchors_preset = -1
+anchor_top = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("2_qui0h")
+
+[node name="btn_architect" type="Button" parent="pnl_bottom" unique_id=870563632]
+layout_mode = 0
+anchor_right = 0.25
+anchor_bottom = 1.0
+text = "Architect"
+
+[node name="btn_work" type="Button" parent="pnl_bottom" unique_id=2033441995]
+layout_mode = 0
+anchor_left = 0.25
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Work"
+
+[node name="btn_schedule" type="Button" parent="pnl_bottom" unique_id=751162868]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.75
+anchor_bottom = 1.0
+text = "Schedule"
+
+[node name="btn_assign" type="Button" parent="pnl_bottom" unique_id=1727105705]
+layout_mode = 0
+anchor_left = 0.75
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Assign"
+
+[node name="Architect" type="Panel" parent="." unique_id=701393302]
+visible = false
+anchors_preset = -1
+anchor_top = 0.84999996
+anchor_right = 0.2
+anchor_bottom = 0.95
+script = ExtResource("3_vrfts")
+
+[node name="btn_orders" type="Button" parent="Architect" unique_id=487162067]
+layout_mode = 0
+anchor_right = 0.5
+anchor_bottom = 0.5
+text = "Orders"
+
+[node name="btn_zone" type="Button" parent="Architect" unique_id=1045594275]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+text = "Zone"
+
+[node name="btn_structure" type="Button" parent="Architect" unique_id=1321972819]
+layout_mode = 0
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+text = "Structure"
+
+[node name="btn_production" type="Button" parent="Architect" unique_id=805674287]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Production"
+
+[node name="pnl_buildable" type="Panel" parent="Architect" unique_id=280570855]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -1.0
+anchor_right = 4.965
+anchor_bottom = 1.0

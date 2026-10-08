@@ -1,10 +1,11 @@
 extends Node
-class_name  Task
 
-enum TaskType {BaseTask, FindItem, WalkTo, PickUp, Eat, Manipulate, Harvest}
+class_name Task
 
-var taskName : String
-var taskType : TaskType = TaskType.BaseTask
+enum TaskType {BaseTask, FindItem, WalkTo, Pickup, Eat, Manipulate, Harvest}
+
+var taskName: String
+var taskType: TaskType = TaskType.BaseTask
 
 var subTasks = []
 var currentSubTask : int = 0
@@ -14,25 +15,39 @@ var targetItemType
 
 func IsFinished() -> bool:
 	return currentSubTask == len(subTasks)
+	
 func Finish():
 	currentSubTask = len(subTasks)
-func GetCurrentSubtask():
+	
+func GetCurrentSubTask():
 	return subTasks[currentSubTask]
 	
-func OnFinishSubtask():
+func OnFinishSubTask():
 	currentSubTask += 1
-
+	
 func OnFoundItem(item):
-	OnFinishSubtask()
-	GetCurrentSubtask().targetItem = item
-	
+	OnFinishSubTask()
+	GetCurrentSubTask().targetItem = item
+
 func OnReachedDestination():
-	OnFinishSubtask()
-	GetCurrentSubtask().targetItem = subTasks[currentSubTask - 1].targetItem
+	OnFinishSubTask()
+	GetCurrentSubTask().targetItem = subTasks[currentSubTask - 1].targetItem
 	
+	
+func InitHarvestPlantTask(target):
+	var subTask = Task.new()
+	subTask.taskType = TaskType.WalkTo
+	subTask.targetItem = target
+	subTasks.append(subTask)
+	
+	subTask = Task.new()
+	subTask.taskType = TaskType.Harvest
+	subTask.targetItem = target
+	subTasks.append(subTask)
 	
 func InitFindAndEatFoodTask():
 	taskName = "Find and eat some food"
+	
 	var subTask = Task.new()
 	subTask.taskType = TaskType.FindItem
 	subTask.targetItemType = ItemManager.ItemCategory.FOOD
@@ -40,12 +55,12 @@ func InitFindAndEatFoodTask():
 	
 	subTask = Task.new()
 	subTask.taskType = TaskType.WalkTo
-	subTasks.append(subTask) 
+	subTasks.append(subTask)
 	
 	subTask = Task.new()
-	subTask.taskType = TaskType.PickUp
+	subTask.taskType = TaskType.Pickup
 	subTasks.append(subTask)
 	
 	subTask = Task.new()
 	subTask.taskType = TaskType.Eat
-	subTasks.append(subTask) 
+	subTasks.append(subTask)

@@ -1,33 +1,51 @@
 extends Node
+
 @onready var taskManager = $"../../TaskManager"
 @onready var itemManager = $"../../ItemManager"
+
 @onready var charController = $".."
-@onready var hungerBar  = $"../hungerBar"
+
+@onready var hungerBar = $"../hungerBar"
+
 enum PawnAction {Idle, DoingSubTask}
 
 var currentAction : PawnAction = PawnAction.Idle
 
 var currentTask : Task = null
-var inHand 
 
-var foodNeed : float = 0.4 #0 = min , 1 = max
+var foodNeed : float = 0.4 #0 =min, 1=max
 var eatSpeed : float = 0.5
 var foodNeedDepleteSpeed : float = 0.1
 
+var harvestSkill : float = 1
 
-func _process(delta: float) -> void:
+var inHand;
+
+func _process(delta):
 	foodNeed -= foodNeedDepleteSpeed * delta
 	hungerBar.value = foodNeed * 100
+	
+	
 	if currentTask != null:
 		DoCurrentTask(delta)
 	else:
 		if foodNeed < 0.5:
+			currentTask = taskManager.RequestFindAndEatFoodTask()
+		else:
 			currentTask = taskManager.RequestTask()
-func OnPickUpItem(item):
+		
+func OnPickupItem(item):
 	inHand = item
 	itemManager.RemoveItemFromWorld(item)
+		
+func OnFinishedSubTask():
+	currentAction = PawnAction.Idle
+	
+	if currentTask.IsFinished():
+		currentTask = null
+		
 func DoCurrentTask(delta):
-	var subTask = currentTask.GetCurrentSubtask()
+	var subTask = currentTask.GetCurrentSubTask()
 	
 	if currentAction == PawnAction.Idle:
 		StartCurrentSubTask(subTask)
@@ -36,7 +54,8 @@ func DoCurrentTask(delta):
 			Task.TaskType.WalkTo:
 				if charController.HasReachedDestination():
 					currentTask.OnReachedDestination()
-					OnFinishedSubTask()	
+					OnFinishedSubTask();
+					
 			Task.TaskType.Eat:
 				if inHand.nutrition > 0 and foodNeed < 1:
 					inHand.nutrition -= eatSpeed * delta
@@ -45,35 +64,42 @@ func DoCurrentTask(delta):
 					print("finished eating food")
 					inHand = null
 					
-					currentTask.OnFinishSubtask()
+					currentTask.OnFinishSubTask()
 					OnFinishedSubTask()
-func OnFinishedSubTask():
-	currentAction = PawnAction.Idle
-	if currentTask.IsFinished():
-		currentTask = null
-		
+					
+			Task.TaskType.Harvest:
+				var targetItem = currentTask.GetCurrentSubTask().targetItem
+				if targetItem.TryHarvest(harvestSkill * delta):
+					currentTask.OnFinishSubTask()
+					OnFinishedSubTask()
+				else:
+					print(targetItem.harvestProgress)
+
 func StartCurrentSubTask(subTask):
-	print("Starting subtask ", Task.TaskType.keys()[subTask.taskType])
+	print ("Starting subtask: " + Task.TaskType.keys()[subTask.taskType])
 	
 	match subTask.taskType:
 		Task.TaskType.FindItem:
 			var targetItem = itemManager.FindNearestItem(subTask.targetItemType, charController.position)
 			if targetItem == null:
-				print("No item, force task to finish")
+				print("no item, force task to finish")
 				currentTask.Finish()
 			else:
 				currentTask.OnFoundItem(targetItem)
 				
-				OnFinishedSubTask()
+			OnFinishedSubTask()
+			
 		Task.TaskType.WalkTo:
 			charController.SetMoveTarget(subTask.targetItem.position)
 			currentAction = PawnAction.DoingSubTask
-		Task.TaskType.PickUp:
-			OnPickUpItem(subTask.targetItem)
-			currentTask.OnFinishSubtask()
+			
+		Task.TaskType.Pickup:
+			OnPickupItem(subTask.targetItem)
+			currentTask.OnFinishSubTask()
 			OnFinishedSubTask()
+			
 		Task.TaskType.Eat:
 			currentAction = PawnAction.DoingSubTask
-	pass
-
- 
+			
+		Task.TaskType.Harvest:
+			currentAction = PawnAction.DoingSubTask

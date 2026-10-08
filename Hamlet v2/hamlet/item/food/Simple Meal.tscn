@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://b3jub3erdngy1"]
 
-[ext_resource type="Texture2D" uid="uid://b8dxja4tcw50o" path="res://art/items.png" id="1_oxu17"]
-[ext_resource type="Script" uid="uid://dxuty7q0ov67n" path="res://item/food/Food.gd" id="2_u5c58"]
+[ext_resource type="Texture2D" uid="uid://b8dxja4tcw50o" path="res://art/items.png" id="1_qfhic"]
+[ext_resource type="Script" uid="uid://dxuty7q0ov67n" path="res://Item/Food/Food.gd" id="2_43uvg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ypveb"]
-atlas = ExtResource("1_oxu17")
+atlas = ExtResource("1_qfhic")
 region = Rect2(48, 16, 16, 16)
 
 [node name="Simple Meal" type="Sprite2D" unique_id=1581964791]
 texture = SubResource("AtlasTexture_ypveb")
-script = ExtResource("2_u5c58")
+script = ExtResource("2_43uvg")
 foodQuality = 1

@@ -1,7 +1,6 @@
 res://Game.tscn
-res://Task.gd
-res://TaskManager.gd
-res://item_manager.gd
-res://pawn.tscn
-res://pawn_ai.gd
-res://pawn.gd
+res://pnl_architect.gd
+res://pnl_bottom.gd
+res://UI.gd
+res://Constructions/wall.gd
+res://Constructions/Wall.tscn

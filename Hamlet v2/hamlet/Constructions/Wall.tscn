@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bcn8dco00kn0g"]
+
+[ext_resource type="Script" uid="uid://dhd7hhb2qgpnk" path="res://Constructions/wall.gd" id="1_n00bn"]
+
+[node name="Wall" type="Node" unique_id=1723019658]
+script = ExtResource("1_n00bn")
+placingMode = 1
+tileMapIndex = Vector2i(1, 0)

@@ -4,13 +4,18 @@ class_name Item
 
 @export var count : int
 @export var weight : float
-# Called when the node enters the scene tree for the first time.
-func _init() -> void:
+
+@onready var taskManager = $"../../TaskManager"
+@onready var itemManager = $"../../ItemManager"
+
+func _init():
 	add_to_group("Item")
-func _ready() -> void:
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(delta):
 	pass

@@ -5,9 +5,10 @@
 [ext_resource type="Script" uid="uid://bm6cw4jwnmuc1" path="res://terrain.gd" id="2_t88pq"]
 [ext_resource type="Script" uid="uid://bdo6fqhf6ria" path="res://TaskManager.gd" id="3_joorw"]
 [ext_resource type="Script" uid="uid://kbg2koyjwbbw" path="res://pathfinding.gd" id="3_r0x5m"]
-[ext_resource type="PackedScene" uid="uid://k47u6khckpdm" path="res://pawn.tscn" id="4_3mrqo"]
 [ext_resource type="Script" uid="uid://cfmlgqd7sky74" path="res://CameraController.gd" id="4_t88pq"]
+[ext_resource type="Texture2D" uid="uid://bdyp7na6wtw64" path="res://art/construction_tiles.png" id="5_2vekm"]
 [ext_resource type="Script" uid="uid://yjdxmtkj61do" path="res://item_manager.gd" id="7_3mrqo"]
+[ext_resource type="PackedScene" uid="uid://lpijedl858lf" path="res://UI.tscn" id="9_yx171"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0hol4"]
 texture = ExtResource("1_sb48q")
@@ -27,10 +28,18 @@ texture = ExtResource("1_sb48q")
 2:1/0 = 0
 2:1/0/custom_data_0 = 10.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yhmtn"]
+texture = ExtResource("5_2vekm")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+1:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_3k665"]
 custom_data_layer_0/name = "walk_difficulty"
 custom_data_layer_0/type = 3
 sources/0 = SubResource("TileSetAtlasSource_0hol4")
+sources/1 = SubResource("TileSetAtlasSource_yhmtn")
 
 [node name="Game" type="Node2D" unique_id=511973121]
 script = ExtResource("1_r0x5m")
@@ -65,11 +74,4 @@ position = Vector2(1064, 799)
 zoom = Vector2(0.96, 0.96)
 script = ExtResource("4_t88pq")
 
-[node name="Pawn" parent="." unique_id=86251647 instance=ExtResource("4_3mrqo")]
-position = Vector2(680, 103)
-
-[node name="hungerBar" type="ProgressBar" parent="Pawn" unique_id=2141087739]
-offset_left = -2.0
-offset_top = -52.0
-offset_right = 106.0
-offset_bottom = -25.0
+[node name="UI" parent="." unique_id=1902769461 instance=ExtResource("9_yx171")]
